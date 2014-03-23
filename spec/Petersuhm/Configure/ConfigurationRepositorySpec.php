@@ -32,4 +32,14 @@ class ConfigurationRepositorySpec extends ObjectBehavior
         $this->shouldThrow('Petersuhm\Configure\Exception\InvalidKeyException')
              ->duringGet('invalid');
     }
+
+    function it_accepts_a_default_value()
+    {
+        // ...
+    }
+
+    function it_accepts_an_array_of_configurations()
+    {
+        // ...
+    }
 }
