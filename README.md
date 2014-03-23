@@ -4,9 +4,9 @@ _A configuration repository for PHP projects._
 ## Usage
 
 ```php
-$settings = new \Petersuhm\Configure\ConfigurationRepository();
+$di->settings = new \Petersuhm\Configure\ConfigurationRepository();
 
-$settings->set('template_path', '../templates');
+$di->settings->set('template_path', '../templates');
 
-$settings->get('template_path');
+$di->settings->get('template_path');
 ```
