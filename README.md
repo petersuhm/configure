@@ -1,0 +1,1 @@
+A configuration repository for PHP projects.

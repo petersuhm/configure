@@ -1,0 +1,3 @@
+suites:
+    thin_suite:
+        namespace: Petersuhm\Configure

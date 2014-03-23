@@ -1,0 +1,25 @@
+{
+    "name": "petersuhm/configure",
+    "description": "A configuration repository for PHP.",
+    "keywords": [
+        "configuration"
+    ],
+    "homepage": "https://github.com/petersuhm/configure",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":Peter Suhm",
+            "email": "peter@suhm.dk",
+            "homepage": "http://petersuhm.com",
+            "role": "Developer"
+        }
+    ],
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Petersuhm": "src/"
+        }
+    }
+}
