@@ -11,4 +11,10 @@ class ConfigurationRepositorySpec extends ObjectBehavior
     {
         $this->shouldHaveType('Petersuhm\Configure\ConfigurationRepository');
     }
+
+    function it_is_iterable()
+    {
+        $this->shouldImplement('IteratorAggregate');
+        $this->getIterator()->shouldHaveType('ArrayIterator');
+    }
 }
