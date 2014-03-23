@@ -3,7 +3,7 @@
 namespace Petersuhm\Configure;
 
 /**
- * Class representing af configurations repository
+ * Class representing a configuration repository
  *
  * @package Petersuhm.Configure
  */
