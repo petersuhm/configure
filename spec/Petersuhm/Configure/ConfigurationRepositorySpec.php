@@ -17,4 +17,19 @@ class ConfigurationRepositorySpec extends ObjectBehavior
         $this->shouldImplement('IteratorAggregate');
         $this->getIterator()->shouldHaveType('ArrayIterator');
     }
+
+    function it_sets_and_gets_a_value()
+    {
+        $this->set('foo', 'bar');
+        $this->get('foo')->shouldReturn('bar');
+
+        $this->set('bar', 'baz');
+        $this->get('bar')->shouldReturn('baz');
+    }
+
+    function it_throws_exception_if_key_is_unknown()
+    {
+        $this->shouldThrow('Petersuhm\Configure\Exception\InvalidKeyException')
+             ->duringGet('invalid');
+    }
 }
