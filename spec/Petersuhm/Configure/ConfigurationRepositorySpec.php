@@ -35,7 +35,10 @@ class ConfigurationRepositorySpec extends ObjectBehavior
 
     function it_accepts_a_default_value()
     {
-        // ...
+        $this->get('key', 'default')->shouldReturn('default');
+
+        $this->set('key', 'value');
+        $this->get('key', 'default')->shouldReturn('value');
     }
 
     function it_accepts_an_array_of_configurations()

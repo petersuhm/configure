@@ -9,4 +9,7 @@ $di->settings = new \Petersuhm\Configure\ConfigurationRepository();
 $di->settings->set('template_path', '../templates');
 
 $di->settings->get('template_path');
+
+// You can provide a default value to be returned
+$di->settings->get('not_set', 'default_value');
 ```

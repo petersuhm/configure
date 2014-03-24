@@ -43,14 +43,26 @@ class ConfigurationRepository implements \IteratorAggregate
     /**
      * Get configuration from repository
      *
+     * Accepts a default value to be returned if 'key' isn't set
+     *
      * @param $key string
+     *
+     * @param $default string (optional)
+     *
+     * @throws InvalidKeyException if the provided key doesn't exist and no
+     *  default value is given
      *
      * @return string
      */
-    public function get($key)
+    public function get($key, $default = null)
     {
         if (!array_key_exists($key, $this->settings)) {
-            throw new InvalidKeyException();
+
+            if (is_null($default)) {
+                throw new InvalidKeyException();
+            }
+
+            return $default;
         }
 
         return $this->settings[$key];
