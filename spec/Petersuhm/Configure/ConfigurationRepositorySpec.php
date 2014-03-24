@@ -43,6 +43,11 @@ class ConfigurationRepositorySpec extends ObjectBehavior
 
     function it_accepts_an_array_of_configurations()
     {
-        // ...
+        $this->set([
+            'first_key' => 'first_value',
+            'second_key' => 'second_value'
+        ]);
+        $this->get('first_key')->shouldReturn('first_value');
+        $this->get('second_key')->shouldReturn('second_value');
     }
 }
