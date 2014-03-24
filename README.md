@@ -1,4 +1,9 @@
 # Configure
+
+[![Build Status](https://travis-ci.org/petersuhm/configure.png?branch=master)](https://travis-ci.org/petersuhm/configure)
+[![Total Downloads](https://poser.pugx.org/petersuhm/configure/downloads.png)](https://packagist.org/packages/petersuhm/configure)
+[![Latest Stable Version](https://poser.pugx.org/petersuhm/configure/v/stable.png)](https://packagist.org/packages/petersuhm/configure)
+
 _A configuration repository for PHP projects._
 
 ## Usage
