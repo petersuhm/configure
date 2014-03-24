@@ -14,5 +14,4 @@ before_script:
   - phpenv rehash
 
 script:
-  - phpcs --standard=psr2 src/
-  - phpunit --coverage-text
+  - vendor/bin/phpspec run
