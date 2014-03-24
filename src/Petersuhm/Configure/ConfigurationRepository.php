@@ -31,16 +31,16 @@ class ConfigurationRepository implements \IteratorAggregate
     /**
      * Add configuration(s) to repository
      *
-     * @param $input array|string
+     * @param $key array|string
      *
      * @param $value string (optional)
      */
-    public function set($input, $value = null)
+    public function set($key, $value = null)
     {
-        if (is_array($input)) {
-            $this->settings = array_merge($this->settings, $input);
+        if (is_array($key)) {
+            $this->settings = array_merge($this->settings, $key);
         } else {
-            $this->settings[$input] = $value;
+            $this->settings[$key] = $value;
         }
     }
 
