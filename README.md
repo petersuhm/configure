@@ -6,6 +6,18 @@
 
 _A configuration repository for PHP projects._
 
+## Install
+
+Via Composer
+
+```json
+{
+    "require": {
+        "petersuhm/configure": "dev-master"
+    }
+}
+```
+
 ## Usage
 
 ```php
@@ -34,3 +46,23 @@ $di->settings->set([
 $di->settings->get('localization.lang');
 $di->settings->get('localization.country');
 ```
+
+## Testing
+
+```bash
+$ vendor/bin/phpspec run
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](https://github.com/petersuhm/configure/blob/master/CONTRIBUTING.md) for details.
+
+## Credits
+
+- [Peter Suhm](https://github.com/petersuhm)
+- [All Contributors](https://github.com/petersuhm/configure/contributors)
+
+
+## License
+
+The MIT License (MIT). Please see [License File](https://github.com/petersuhm/configure/blob/master/LICENSE) for more information.
