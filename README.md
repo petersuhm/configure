@@ -26,4 +26,6 @@ $di->settings->set([
         'country' => 'dk'
     ]
 ]);
+$di->settings->get('localization.lang');
+$di->settings->get('localization.country');
 ```
