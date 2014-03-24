@@ -31,6 +31,8 @@ class ConfigurationRepository implements \IteratorAggregate
     /**
      * Add configuration(s) to repository
      *
+     * If given a multi dimensional array, it will flatten it using dot notation
+     *
      * @param $key array|string
      *
      * @param $value string (optional)
@@ -38,6 +40,7 @@ class ConfigurationRepository implements \IteratorAggregate
     public function set($key, $value = null)
     {
         if (is_array($key)) {
+            $key = $this->flattenArray($key);
             $this->settings = array_merge($this->settings, $key);
         } else {
             $this->settings[$key] = $value;
@@ -70,5 +73,32 @@ class ConfigurationRepository implements \IteratorAggregate
         }
 
         return $this->settings[$key];
+    }
+
+    /**
+     * Flatten array using dot notation
+     *
+     * Credits: Taylor Otwell and Laravel Framework:
+     *  http://laravel.com/api/source-function-array_dot.html#85-109
+     *
+     * @param array $array
+     *
+     * @param string $prepend (optional)
+     *
+     * @return array
+     */
+    protected function flattenArray($array, $prepend = '')
+    {
+        $results = array();
+
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $results = array_merge($results, $this->flattenArray($value, $prepend.$key.'.'));
+            } else {
+                $results[$prepend.$key] = $value;
+            }
+        }
+
+        return $results;
     }
 }

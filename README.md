@@ -18,4 +18,12 @@ $di->settings->set([
     'lang' => 'da',
     'country' => 'dk'
 ]);
+
+// Multi dimensional arrays will be flattened using dot notation
+$di->settings->set([
+    'localization' => [
+        'lang' => 'da',
+        'country' => 'dk'
+    ]
+]);
 ```

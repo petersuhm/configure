@@ -50,4 +50,30 @@ class ConfigurationRepositorySpec extends ObjectBehavior
         $this->get('first_key')->shouldReturn('first_value');
         $this->get('second_key')->shouldReturn('second_value');
     }
+
+    function it_flattens_multi_dimensional_arrays()
+    {
+        $this->set([
+            'first_key' => 'first_value',
+
+            'second_key' => [
+                'first_key_l2' => 'first_value_l2',
+                'second_key_l2' => 'second_value_l2'
+            ],
+
+            'third_key' => [
+                'first_key_l2' => [
+                    'first_key_l3' => 'first_value_l3'
+                ],
+                'second_key_l2' => [
+                    'second_key_l3' => 'second_value_l3'
+                ]
+            ]
+        ]);
+        $this->get('first_key')->shouldReturn('first_value');
+        $this->get('second_key.first_key_l2')->shouldReturn('first_value_l2');
+        $this->get('second_key.second_key_l2')->shouldReturn('second_value_l2');
+        $this->get('third_key.first_key_l2.first_key_l3')->shouldReturn('first_value_l3');
+        $this->get('third_key.second_key_l2.second_key_l3')->shouldReturn('second_value_l3');
+    }
 }
