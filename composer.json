@@ -14,6 +14,9 @@
             "role": "Developer"
         }
     ],
+    "require": {
+        "symfony/yaml": "2.4.*@dev"
+    },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"
     },

@@ -18,7 +18,7 @@ Via Composer
 }
 ```
 
-## Usage
+## Basic usage
 
 ```php
 $di->settings = new \Petersuhm\Configure\ConfigurationRepository();
@@ -45,6 +45,27 @@ $di->settings->set([
 ]);
 $di->settings->get('localization.lang');
 $di->settings->get('localization.country');
+```
+
+## Using configuration files
+
+As of now, Configure supports [YAML](http://www.yaml.org/) files.
+
+```yaml
+# config.yml
+localization:
+    lang: da
+    country: dk
+app_name: Configure
+```
+
+```php
+$loader = new \Petersuhm\Configure\Loader\YamlFileLoader('config.yml');
+
+$di->settings->load($loader);
+
+$di->settings->get('localization.lang');
+$di->settings->get('app_name');
 ```
 
 ## Testing

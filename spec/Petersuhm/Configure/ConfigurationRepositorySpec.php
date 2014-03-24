@@ -4,6 +4,7 @@ namespace spec\Petersuhm\Configure;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Petersuhm\Configure\Loader\FileLoaderInterface;
 
 class ConfigurationRepositorySpec extends ObjectBehavior
 {
@@ -75,5 +76,12 @@ class ConfigurationRepositorySpec extends ObjectBehavior
         $this->get('second_key.second_key_l2')->shouldReturn('second_value_l2');
         $this->get('third_key.first_key_l2.first_key_l3')->shouldReturn('first_value_l3');
         $this->get('third_key.second_key_l2.second_key_l3')->shouldReturn('second_value_l3');
+    }
+
+    function it_loads_from_file(FileLoaderInterface $loader)
+    {
+        $loader->asArray()->shouldBeCalled()->willReturn(array('foo' => 'bar'));
+        $this->load($loader);
+        $this->get('foo')->shouldReturn('bar');
     }
 }

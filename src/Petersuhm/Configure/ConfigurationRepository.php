@@ -3,6 +3,7 @@
 namespace Petersuhm\Configure;
 
 use Petersuhm\Configure\Exception\InvalidKeyException;
+use Petersuhm\Configure\Loader\FileLoaderInterface;
 
 /**
  * Class representing a configuration repository
@@ -73,6 +74,16 @@ class ConfigurationRepository implements \IteratorAggregate
         }
 
         return $this->settings[$key];
+    }
+
+    /**
+     * Load configuration values from a file loader instance
+     *
+     * @param $loader FileLoaderInterface
+     */
+    public function load(FileLoaderInterface $loader)
+    {
+        $this->set($loader->asArray());
     }
 
     /**
