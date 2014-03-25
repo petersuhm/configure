@@ -49,7 +49,7 @@ $di->settings->get('localization.country');
 
 ## Using configuration files
 
-As of now, Configure supports [YAML](http://www.yaml.org/) files.
+As of now, Configure supports [YAML](http://www.yaml.org/) and PHP files.
 
 ```yaml
 # config.yml
@@ -60,7 +60,24 @@ app_name: Configure
 ```
 
 ```php
+# config.php
+<?php
+
+return array(
+
+    'localization' => array(
+        'lang' => 'da',
+        'country' => 'dk'
+    ),
+
+    'app_name' => 'Configure'
+);
+```
+
+```php
 $loader = new \Petersuhm\Configure\Loader\YamlFileLoader('config.yml');
+// or
+$loader = new \Petersuhm\Configure\Loader\ArrayFileLoader('config.php');
 
 $di->settings->load($loader);
 
