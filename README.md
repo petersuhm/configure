@@ -6,9 +6,14 @@
 
 _A configuration repository for PHP projects._
 
+Configure is a configuration repository for PHP projects. If your app depends on
+some sort of configuration settings, you can use Configure to handle them. It
+has a simple API and supports for different kinds of configuration file
+[formats](#using-configuration-files).
+
 ## Install
 
-Via Composer
+You can install Configure via Composer:
 
 ```json
 {
@@ -20,17 +25,30 @@ Via Composer
 
 ## Basic usage
 
+Using Configure is as simple as instantiating the `ConfigurationRepository`
+class and start adding settings to it:
+
 ```php
 $di->settings = new \Petersuhm\Configure\ConfigurationRepository();
 
 $di->settings->set('template_path', '../templates');
 
+```
+
+Now you can start querying the repository:
+
+```php
 $di->settings->get('template_path');
 
-// You can provide a default value to be returned
+// You can also provide a default value to be returned
 $di->settings->get('not_set', 'default_value');
 
-// You can provide multiple configurations in array format
+```
+
+Configure also has supports for arrays:
+
+```php
+
 $di->settings->set([
     'lang' => 'da',
     'country' => 'dk'
@@ -74,6 +92,9 @@ return array(
 );
 ```
 
+In order to load the files, you need to create an instance of the relevant file
+loader class and provide it to the `load()` method on the repository:
+
 ```php
 $loader = new \Petersuhm\Configure\Loader\YamlFileLoader('config.yml');
 // or
@@ -86,6 +107,9 @@ $di->settings->get('app_name');
 ```
 
 ## Testing
+
+Configure is fully covered by unit tests. All code is written using a behavior
+driven approach with [phpspec](http://phpspec.net/).
 
 ```bash
 $ vendor/bin/phpspec run
