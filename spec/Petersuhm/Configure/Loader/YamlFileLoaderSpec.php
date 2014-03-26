@@ -15,8 +15,6 @@ class YamlFileLoaderSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Petersuhm\Configure\Loader\YamlFileLoader');
-        $this->shouldImplement('Petersuhm\Configure\Loader\FileLoaderInterface');
-        $this->getPath()->shouldBe('spec/fixtures/config.yml');
     }
 
     function it_return_content_as_array()
