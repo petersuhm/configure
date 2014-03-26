@@ -2,6 +2,8 @@
 
 namespace Petersuhm\Configure\Loader;
 
+use Petersuhm\Configure\Exception\FileNotFoundException;
+
 /**
  * PHP array configuration file loader
  *
@@ -23,7 +25,7 @@ class ArrayFileLoader implements FileLoaderInterface
      */
     public function __construct($path)
     {
-        $this->path = $path;
+        $this->setPath($path);
     }
 
     /**
@@ -44,5 +46,18 @@ class ArrayFileLoader implements FileLoaderInterface
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Setter for the path of the array configuration file
+     *
+     * @param $path string
+     */
+    public function setPath($path)
+    {
+        if (!is_file($path))
+            throw new FileNotFoundException;
+
+        $this->path = $path;
     }
 }

@@ -30,4 +30,10 @@ class YamlFileLoaderSpec extends ObjectBehavior
         );
         $this->asArray()->shouldReturn($expected);
     }
+
+    function it_throws_exception_if_file_doesnt_exist()
+    {
+        $this->shouldThrow('Petersuhm\Configure\Exception\FileNotFoundException')
+             ->duringSetPath('foo.bar');
+    }
 }

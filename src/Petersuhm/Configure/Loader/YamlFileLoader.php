@@ -3,6 +3,7 @@
 namespace Petersuhm\Configure\Loader;
 
 use Symfony\Component\Yaml\Yaml;
+use Petersuhm\Configure\Exception\FileNotFoundException;
 
 /**
  * Yaml configuration file loader
@@ -25,7 +26,7 @@ class YamlFileLoader implements FileLoaderInterface
      */
     public function __construct($path)
     {
-        $this->path = $path;
+        $this->setPath($path);
     }
 
     /**
@@ -46,5 +47,18 @@ class YamlFileLoader implements FileLoaderInterface
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Setter for the path of the yaml configuration file
+     *
+     * @param $path string
+     */
+    public function setPath($path)
+    {
+        if (!is_file($path))
+            throw new FileNotFoundException;
+
+        $this->path = $path;
     }
 }

@@ -24,9 +24,16 @@ interface FileLoaderInterface
     public function asArray();
 
     /**
-     * Getter for the loader's file path
+     * Getter for the path of the configuration file
      *
      * @return string
      */
     public function getPath();
+
+    /**
+     * Setter for the path of the configuration file
+     *
+     * @param $path string
+     */
+    public function setPath($path);
 }
